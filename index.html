@@ -3,25 +3,47 @@
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>cookie consent</title>
-   <link rel="stylesheet" href="./index.css">
+   <title>Cookie consent</title>
+   <link rel="stylesheet" href="./style.css">
 </head>
 <body>
    
    <div class="wrapper">
+      <img src="./cookie.JPG" alt="cookie img">
+      <span class="cancel">❌</span>
       <div class="content">
-         <h1>cookie consent</h1>
-         <p>we use cookies</p>
+         <header>Cookie Consent</header>
+         <p>We use cookies to make sure you get the best
+          experience in our site <a href="#">Click here</a> to learn more about our cookie policy
          <div class="buttons">
-            <button class="item">ok</button>
-            <a href="">learn more</a>
+            <button class="item">Accept cookies</dibutton>
+            <!-- <a href="#" class="item">learn more </a> -->
          </div>
       </div>
    </div>
 
-
-   
-<script src="./script.js"></script>
-<noscript>pls enable javascript in order to run this page</noscript>
 </body>
+<script type="text/javascript">
+   const cookieBox = document.querySelector(".wrapper");
+   const acceptBtn = document.querySelector(".buttons button");
+   const cancel_modal = document.querySelector(".cancel");
+   
+
+   acceptBtn.addEventListener("click", ()=>{
+      document.cookie = "CookieBy=Goo; max-age="+60*60*24*30; // cookie set for 1 month
+      if (document.cookie) {
+         cookieBox.classList.add("hide");
+      }
+      else{
+         alert("cookie can't be set");
+      }
+   })
+   let checkcookie = document.cookie.indexOf("CookieBy=Goo");
+   checkcookie != -1 ? cookieBox.classList.add("hide"): cookieBox.classList.remove("hide"); 
+
+  // remove cookie modal 
+  cancel_modal.addEventListener("click", ()=>{
+  cookieBox.classList.add("hide");
+  })
+</script>
 </html>
